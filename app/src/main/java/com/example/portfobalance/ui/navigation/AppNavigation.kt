@@ -9,6 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.portfobalance.ui.screens.LoginScreen
+import com.example.portfobalance.ui.screens.RegisterScreen
 
 @Composable
 fun AppNavigation() {
@@ -19,8 +21,33 @@ fun AppNavigation() {
         startDestination = Screen.Login.route
     ) {
         composable(Screen.Splash.route) { PlaceholderScreen("Splash Screen") }
-        composable(Screen.Login.route) { PlaceholderScreen("Halaman Login PortfoBalance") }
-        composable(Screen.Register.route) { PlaceholderScreen("Halaman Register") }
+        composable(Screen.Login.route) {
+            LoginScreen(
+                onNavigateToRegister = {
+                    navController.navigate(Screen.Register.route)
+                },
+                onLoginSuccess = { role ->
+                    val destination = if (role == "ADMIN") {
+                        Screen.AdminDashboard.route
+                    } else {
+                        Screen.InvestorDashboard.route
+                    }
+                    navController.navigate(destination) {
+                        popUpTo(Screen.Login.route) { inclusive = true }
+                    }
+                }
+            )
+        }
+        composable(Screen.Register.route) {
+            RegisterScreen(
+                onNavigateBackToLogin = {
+                    navController.popBackStack()
+                },
+                onRegisterSuccess = {
+                    navController.popBackStack()
+                }
+            )
+        }
         composable(Screen.InvestorDashboard.route) { PlaceholderScreen("Dashboard Investor") }
         composable(Screen.AdminDashboard.route) { PlaceholderScreen("Dashboard Admin") }
         composable(Screen.Wallets.route) { PlaceholderScreen("Dompet Sekuritas") }
