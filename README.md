@@ -38,3 +38,8 @@ Berikut adalah linimasa pengembangan proyek **PortfoBalance** yang direkonstruks
 
 ### 🗓️ Minggu 1 — Pertemuan 9 (24 November 2026 - 25 November 2026)
 * **Inisialisasi & Setup Lingkungan** ( `ae120be`, `944b401`, `32f78c1` ): Initial commit repositori, inisialisasi proyek Android Jetpack Compose, penambahan izin jaringan internet (`INTERNET`), serta registrasi *dependencies* MVVM (`lifecycle-viewmodel-compose`), `navigation-compose`, Retrofit, dan `security-crypto`.
+
+### 🗓️ Minggu 2 — Pertemuan 10 (25 November 2026)
+* **Arsitektur MVVM & Navigasi** ( `704aaa2` ): Pembuatan struktur *package* MVVM (`data`, `repository`, `ui`, `viewmodel`) serta kerangka rute navigasi layar menggunakan `Navigation Compose`.
+* **Komponen UI Global Reusable** ( `7cace82` ): Pembuatan komponen antarmuka standar yang dapat digunakan ulang di berbagai layar (`AppSearchBar`, `LoadingIndicator`, `EmptyState`, `ErrorView`, dan `ConfirmDeleteDialog`).
+* **Layar Autentikasi (Login & Register)** ( `f0a1f5b` ): Pembuatan halaman `LoginScreen` dan `RegisterScreen` beserta validasi input form dasar dan integrasi perpindahan rute navigasi.
